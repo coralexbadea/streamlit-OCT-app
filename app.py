@@ -81,7 +81,7 @@ def main():
     st.text("The segmentation model is a version of [Segformer](https://huggingface.co/TUCN/Segformer_OCT_Retina) fine-tuned on [AROI dataset](https://ieeexplore.ieee.org/abstract/document/9596934)")
     uploaded_files = st.file_uploader("Upload multiple images", accept_multiple_files=True)
 
-   if uploaded_files:
+    if uploaded_files:
         for uploaded_file in uploaded_files:
             st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
             image = Image.open(uploaded_file)
