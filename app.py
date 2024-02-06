@@ -81,7 +81,7 @@ def main():
     st.text("The segmentation model is a version of <a href='https://huggingface.co/TUCN/Segformer_OCT_Retina'>Segformer</a> fine-tuned on <a href='https://ieeexplore.ieee.org/abstract/document/9596934'>AROI</a> dataset")
     uploaded_files = st.file_uploader("Upload multiple images", accept_multiple_files=True)
 
-    if uploaded_files:
+   if uploaded_files:
         for uploaded_file in uploaded_files:
             st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
             image = Image.open(uploaded_file)
@@ -92,6 +92,17 @@ def main():
             seg_result = perform_segmentation(image)
             seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
             st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
+    else:
+        st.write("No files uploaded.")
+        default_images = {
+            "Default Image 1": "image1.jpg",
+            "Default Image 2": "image2.jpg",
+            "Default Image 3": "image3.jpg"
+        }
+        default_option = st.radio("Choose a default image:", list(default_images.keys()))
+        default_image_path = default_images[default_option]
+        default_image = Image.open(default_image_path)
+        st.image(default_image, caption=default_option, use_column_width=True)
 
 if __name__ == "__main__":
     main()
