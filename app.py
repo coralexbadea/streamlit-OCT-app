@@ -98,7 +98,7 @@ def main():
             # "Example Image 2": "image2.jpg",
             # "Example Image 3": "image3.jpg"
         }
-        default_option = st.radio("Choose a default image:", list(default_images.keys()))
+        default_option = st.radio("Examples:", list(default_images.keys()))
         default_image_path = default_images[default_option]
         default_image = Image.open(default_image_path)
         st.image(default_image, caption=default_option, use_column_width=True)
