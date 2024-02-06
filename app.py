@@ -78,7 +78,7 @@ def perform_segmentation(image):
 def main():
     st.title("Demo OCT Retinal Segmentation App")
     st.subheader("With ❤️ by TUCN")
-    st.text("The segmentation model is a version of [Segformer](https://huggingface.co/TUCN/Segformer_OCT_Retina) fine-tuned on [AROI dataset](https://ieeexplore.ieee.org/abstract/document/9596934)")
+    st.write("The segmentation model is a version of [Segformer](https://huggingface.co/TUCN/Segformer_OCT_Retina) fine-tuned on [AROI dataset](https://ieeexplore.ieee.org/abstract/document/9596934)")
     uploaded_files = st.file_uploader("Upload multiple images", accept_multiple_files=True)
 
     if uploaded_files:
