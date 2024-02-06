@@ -109,7 +109,7 @@ def main():
         seg_result = perform_segmentation(default_image)
         seg_overlay = plot_image_result(default_image, seg_result[0].cpu().numpy())
         st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
-    st.write("Made with ❤️ by Cornel Alexanru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
+    st.write("Made with ❤️ by Cornel Alexandru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
     
 if __name__ == "__main__":
     main()
