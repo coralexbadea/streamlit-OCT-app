@@ -61,8 +61,7 @@ feature_extractor = SegformerFeatureExtractor.from_pretrained("nvidia/segformer-
 model = SegformerForSemanticSegmentation.from_pretrained('coralexbadea/Segformer_OCT_Retina')
 
 # Function to perform segmentation
-def perform_segmentation(image_path):
-    image = Image.open(image_path)
+def perform_segmentation(image):
     inputs = feature_extractor(images=image, return_tensors="pt")
     outputs = model(**inputs)
     logits = outputs.logits
@@ -84,10 +83,14 @@ def main():
     if uploaded_files:
         for uploaded_file in uploaded_files:
             st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
-            seg_result = perform_segmentation(uploaded_file)
-            seg_overlay = plot_image_result(Image.open(uploaded_file), seg_result[0].cpu().numpy())
+            image = Image.open(uploaded_file)
+            # Convert image to grayscale if necessary
+            if image.mode != "RGB":
+                image = image.convert("RGB")
+
+            seg_result = perform_segmentation(image)
+            seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
             st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
 
 if __name__ == "__main__":
     main()
-
