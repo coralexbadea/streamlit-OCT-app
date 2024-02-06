@@ -102,7 +102,7 @@ def main():
     #     default_image_path = default_images[default_option]
     #     default_image = Image.open(default_image_path)
     #     st.image(default_image, caption=default_option, use_column_width=True)
-    st.text("With ❤️ by Cornel Alexanru Badea and ISG group (member of TUCN)")
+    st.write("Made with ❤️ by Cornel Alexanru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
     
 if __name__ == "__main__":
     main()
