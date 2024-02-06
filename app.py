@@ -101,6 +101,8 @@ def main():
         default_option = st.radio("Examples: ", list(default_images.keys()))
         default_image_path = default_images[default_option]
         image = Image.open(default_image_path)
+        st.image(image, caption='Segmentation Result.', use_column_width=True)
+        
         # Convert image to grayscale if necessary
         if image.mode != "RGB":
             image = image.convert("RGB")
