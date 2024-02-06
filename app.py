@@ -77,8 +77,7 @@ def perform_segmentation(image):
 # Streamlit app
 def main():
     st.title("Demo OCT Retinal Segmentation App")
-    st.subheader("With ❤️ by TUCN")
-    st.write("The segmentation model is a version of [Segformer](https://huggingface.co/TUCN/Segformer_OCT_Retina) fine-tuned on [AROI dataset](https://ieeexplore.ieee.org/abstract/document/9596934)")
+    st.write("The segmentation model is a version of [Segformer](https://huggingface.co/coralexbadea/Segformer_OCT_Retina) fine-tuned on [AROI dataset](https://ieeexplore.ieee.org/abstract/document/9596934)")
     uploaded_files = st.file_uploader("Upload multiple images", accept_multiple_files=True)
 
     if uploaded_files:
@@ -95,14 +94,15 @@ def main():
     # else:
     #     st.write("No files uploaded.")
     #     default_images = {
-    #         "Default Image 1": "image1.jpg",
-    #         "Default Image 2": "image2.jpg",
-    #         "Default Image 3": "image3.jpg"
+    #         "Example Image 1": "image1.jpg",
+    #         "Example Image 2": "image2.jpg",
+    #         "Example Image 3": "image3.jpg"
     #     }
     #     default_option = st.radio("Choose a default image:", list(default_images.keys()))
     #     default_image_path = default_images[default_option]
     #     default_image = Image.open(default_image_path)
     #     st.image(default_image, caption=default_option, use_column_width=True)
-
+    st.text("With ❤️ by Cornel Alexanru Badea and ISG group (member of TUCN)")
+    
 if __name__ == "__main__":
     main()
