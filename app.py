@@ -100,9 +100,16 @@ def main():
         }
         default_option = st.radio("Choose a default image:", list(default_images.keys()))
         default_image_path = default_images[default_option]
-        default_image = Image.open(default_image_path)
-        st.image(default_image, caption=default_option, use_column_width=True)
-    st.write("Made with ❤️ by Cornel Alexanru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
+        image = Image.open(default_image_path)
+        # Convert image to grayscale if necessary
+        if image.mode != "RGB":
+            image = image.convert("RGB")
+
+        seg_result = perform_segmentation(image)
+        seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
+        st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
+        
+    st.write("Made with ❤️ by Cornel Alexandru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
     
 if __name__ == "__main__":
     main()
