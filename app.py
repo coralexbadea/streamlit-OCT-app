@@ -91,17 +91,17 @@ def main():
             seg_result = perform_segmentation(image)
             seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
             st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
-    # else:
-    #     st.write("No files uploaded.")
-    #     default_images = {
-    #         "Example Image 1": "image1.jpg",
-    #         "Example Image 2": "image2.jpg",
-    #         "Example Image 3": "image3.jpg"
-    #     }
-    #     default_option = st.radio("Choose a default image:", list(default_images.keys()))
-    #     default_image_path = default_images[default_option]
-    #     default_image = Image.open(default_image_path)
-    #     st.image(default_image, caption=default_option, use_column_width=True)
+    else:
+        st.write("No files uploaded.")
+        default_images = {
+            "Default Image": "image_default.png",
+            # "Example Image 2": "image2.jpg",
+            # "Example Image 3": "image3.jpg"
+        }
+        default_option = st.radio("Choose a default image:", list(default_images.keys()))
+        default_image_path = default_images[default_option]
+        default_image = Image.open(default_image_path)
+        st.image(default_image, caption=default_option, use_column_width=True)
     st.write("Made with ❤️ by Cornel Alexanru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
     
 if __name__ == "__main__":
