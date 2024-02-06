@@ -91,25 +91,25 @@ def main():
             seg_result = perform_segmentation(image)
             seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
             st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
-    else:
-        st.write("No files uploaded.")
-        default_images = {
-            "Default Image": "image_default.png",
-            # "Example Image 2": "image2.jpg",
-            # "Example Image 3": "image3.jpg"
-        }
-        default_option = st.radio("Examples: ", list(default_images.keys()))
-        default_image_path = default_images[default_option]
-        image = Image.open(default_image_path)
-        st.image(image, caption='Segmentation Result.', use_column_width=True)
+    # else:
+    #     st.write("No files uploaded.")
+    #     default_images = {
+    #         "Default Image": "image_default.png",
+    #         # "Example Image 2": "image2.jpg",
+    #         # "Example Image 3": "image3.jpg"
+    #     }
+    #     default_option = st.radio("Examples: ", list(default_images.keys()))
+    #     default_image_path = default_images[default_option]
+    #     image = Image.open(default_image_path)
+    #     st.image(image, caption='Segmentation Result.', use_column_width=True)
         
-        # Convert image to grayscale if necessary
-        if image.mode != "RGB":
-            image = image.convert("RGB")
+    #     # Convert image to grayscale if necessary
+    #     if image.mode != "RGB":
+    #         image = image.convert("RGB")
 
-        seg_result = perform_segmentation(image)
-        seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
-        st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
+    #     seg_result = perform_segmentation(image)
+    #     seg_overlay = plot_image_result(image, seg_result[0].cpu().numpy())
+    #     st.image(seg_overlay, caption='Segmentation Result.', use_column_width=True)
         
     st.write("Made with ❤️ by Cornel Alexandru Badea and [ISG group](https://isg.utcluj.ro/) (member of TUCN)")
     
